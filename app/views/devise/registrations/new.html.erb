@@ -4,25 +4,68 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :name, 'Nombre(s)' %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :first_last_name, 'Primer apellido' %><br />
+    <%= f.text_field :first_last_name, autocomplete: "first_last_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :second_last_name, 'Segundo apellido (Opcional)' %><br />
+    <%= f.text_field :second_last_name, autocomplete: "second_last_name" %>
+  </div>
+
+  <div class="field">
+    <%= label :country, 'País' %><br />
+    <%= collection_select( :country, :country_id, Country.all, :id, :name, prompt: true) %>
+  </div>
+  <!--collection_select( :invoice, :employee_id, Employee.all, :id, :name, {}, { :multiple => false } ) -->
+  <!--collection_select( :city, :state_id, State.all, :id, :name, {}, { :multiple => false } )
+      grouped_collection_select(:city, :country_id, @continents, 'countries.sort.reverse', :name, :id, :name)
+    -->
+  <div class="field">
+    <%= label :state_id, 'Estado / Departamento / Provincia' %><br />
+    <%= grouped_collection_select(:state, :country_id, Country.all, :states, :name, :id, :name, prompt: true)%>
+  </div>
+
+  <div class="field">
+    <%= f.label :city_id, 'Ciudad' %><br />
+    <%= f.grouped_collection_select(:city_id, State.all, :cities, :name, :id, :name, prompt: true)%>
+  </div>
+
+  <div class="field">
+    <%= f.label :national_identifier_number, 'Número de identificación' %><br />
+    <%= f.text_field :national_identifier_number, autocomplete: "national_identifier_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth_date, 'Fecha de nacimiento' %><br />
+    <%= f.date_field :birth_date, autocomplete: "birth_date"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, 'Correo electronico' %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, 'Contraseña' %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, 'Confirma tu contraseña' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Registrarse" %>
   </div>
 <% end %>
 
