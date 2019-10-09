@@ -35,7 +35,42 @@ cities_list = [
   ["Grand Rapids", 6]
 ]
 
+genders_list = [
+  ["Masculino", "M"],
+  ["Femenino", "F"]
+]
 
+nacionalities_list = [
+  "Colombiana",
+  "Extranjero"
+]
+
+military_card_types_list = [
+  "Primera clase",
+  "Segunda clase"
+]
+
+academic_modalities_list = [
+  ["Técnica", "TC"],
+  ["Especialización", "ES"],
+  ["Tecnología", "TL"],
+  ["Maestría o magister", "MG"],
+  ["Tecnología Especializada", "TE"],
+  ["Doctorado o PHD", "DOC"],
+  ["Universitaria", "UN"]
+]
+
+national_identifier_type_list = [
+  ["Cedula de ciudadanía", "CC"],
+  ["Cedula extranjera", "CE"],
+  ["Pasaporte", "PAS"]
+]
+
+ocupation_list = [
+  "Servidor público",
+  "Empleado del sector privado",
+  "Trabajador independiente"
+]
 
 countries_list.each do |name|
   Country.create( name: name )
@@ -47,4 +82,28 @@ end
 
 cities_list.each do |city, state_id|
   City.create( name: city , state_id: state_id)
+end
+
+genders_list.each do |description, resume_desc|
+  Gender.create( description: description , resume_desc: resume_desc)
+end
+
+nacionalities_list.each do |description|
+  NacionalityType.create( description: description)
+end
+
+military_card_types_list.each do |description|
+  MilitaryCardType.create( description: description)
+end
+
+academic_modalities_list.each do |description, resume_desc|
+  AcademicModality.create( description: description , resume_desc: resume_desc)
+end
+
+national_identifier_type_list.each do |description, resume_desc|
+  NationalIdentifierType.create( description: description , resume_desc: resume_desc)
+end
+
+ocupation_list.each do |description|
+  Ocupation.create( description: description)
 end

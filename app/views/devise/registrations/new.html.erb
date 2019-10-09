@@ -1,72 +1,136 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :name, 'Nombre(s)' %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Register an Account</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
+                  <label for="firstName">First name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required">
+                  <label for="lastName">Last name</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+              <label for="inputEmail">Email address</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                  <label for="inputPassword">Password</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-label-group">
+                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
+                  <label for="confirmPassword">Confirm password</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary btn-block" href="login.html">Register</a>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="login.html">Login Page</a>
+          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
   </div>
+<div class="row">
+  <div class="col-6 col-center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html=>{:class => "form-signup"}) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-label-group">
+        <%= f.label :name, 'Nombre(s)', :class => "label-custom" %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control" %>
+      </div>
+      <div class="form-label-group">
+        <%= f.label :first_last_name, 'Primer apellido', :class => "label-custom" %><br />
+        <%= f.text_field :first_last_name, autocomplete: "first_last_name", :class => "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :first_last_name, 'Primer apellido' %><br />
-    <%= f.text_field :first_last_name, autocomplete: "first_last_name" %>
+      <div class="form-label-group">
+        <%= f.label :second_last_name, 'Segundo apellido (Opcional)', :class => "label-custom" %><br />
+        <%= f.text_field :second_last_name, autocomplete: "second_last_name", :class => "form-control" %>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label :national_identifier_number, 'Número de identificación', :class => "label-custom" %><br />
+        <%= f.text_field :national_identifier_number, autocomplete: "national_identifier_number", :class => "form-control" %>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label :birth_date, 'Fecha de nacimiento', :class => "label-custom" %><br />
+        <%= f.date_field :birth_date, autocomplete: "birth_date", :class => "form-control"%>
+      </div>
+
+      <div class="form-label-group">
+        <%= label :country, 'País de nacimiento', :class => "label-custom" %><br />
+        <%= collection_select(:country, :country_id, Country.all, :id, :name, {:prompt=>true}, {:class=>'form-control'}) %>
+      </div>
+
+      <div class="form-label-group">
+        <%= label :state_id, 'Departamento de nacimiento' , :class => "label-custom" %><br />
+        <%= grouped_collection_select(:state, :country_id, Country.all, :states, :name, :id, :name, {:prompt=>true}, {:class=>'form-control'})%>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label :city_birth_id, 'Ciudad de nacimiento', :class => "label-custom" %><br />
+        <%= f.grouped_collection_select(:city_birth_id, State.all, :cities, :name, :id, :name, {:prompt=>true}, {:class=>'form-control'})%>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label :email, 'Correo electronico', :class => "label-custom" %><br />
+        <%= f.email_field :email, autocomplete: "email", :class => "form-control" %>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label :password, 'Contraseña', :class => "label-custom" %><br />
+        <% if @minimum_password_length %>
+        <span class="mini-pass-custom"> <em>(Mínimo <%= @minimum_password_length %> caracteres)</em> </span>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", :class => "form-control" %>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.label :password_confirmation, 'Confirma tu contraseña', :class => "label-custom" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Registrarse" %>
+      </div>
+
+      <%= render "devise/shared/links" %>
+      <% end %>
+
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :second_last_name, 'Segundo apellido (Opcional)' %><br />
-    <%= f.text_field :second_last_name, autocomplete: "second_last_name" %>
-  </div>
 
-  <div class="field">
-    <%= label :country, 'País' %><br />
-    <%= collection_select( :country, :country_id, Country.all, :id, :name, prompt: true) %>
+  <!--<div class="form-label-group">
+    <%= label :country, 'País de nacimiento' %><br />
+    <%= collection_select(:country, :country_id, Country.all, :id, :name, {:prompt=>true}, {:class=>'form-control'}) %>
   </div>
   <!--collection_select( :invoice, :employee_id, Employee.all, :id, :name, {}, { :multiple => false } ) -->
   <!--collection_select( :city, :state_id, State.all, :id, :name, {}, { :multiple => false } )
       grouped_collection_select(:city, :country_id, @continents, 'countries.sort.reverse', :name, :id, :name)
     -->
-  <div class="field">
-    <%= label :state_id, 'Estado / Departamento / Provincia' %><br />
-    <%= grouped_collection_select(:state, :country_id, Country.all, :states, :name, :id, :name, prompt: true)%>
-  </div>
-
-  <div class="field">
-    <%= f.label :city_id, 'Ciudad' %><br />
-    <%= f.grouped_collection_select(:city_id, State.all, :cities, :name, :id, :name, prompt: true)%>
-  </div>
-
-  <div class="field">
-    <%= f.label :national_identifier_number, 'Número de identificación' %><br />
-    <%= f.text_field :national_identifier_number, autocomplete: "national_identifier_number" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :birth_date, 'Fecha de nacimiento' %><br />
-    <%= f.date_field :birth_date, autocomplete: "birth_date"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :email, 'Correo electronico' %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, 'Contraseña' %>
-    <% if @minimum_password_length %>
-    <em>(Mínimo <%= @minimum_password_length %> caracteres)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirma tu contraseña' %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Registrarse" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <!--<div class="form-label-group">
+    <%= label :state_id, 'Departamento de nacimiento' %><br />
+    <%= grouped_collection_select(:state, :country_id, Country.all, :states, :name, :id, :name, {:prompt=>true}, {:class=>'form-control'})%>
+  </div>-->

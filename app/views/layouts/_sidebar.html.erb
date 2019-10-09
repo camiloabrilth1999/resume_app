@@ -1,0 +1,28 @@
+<%- if user_signed_in? %>
+<!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"> <a href="<%=root_path%>">Resume App</a>
+
+      </div>
+      <div class="list-group list-group-flush">
+        <button class="dropdown-btn list-group-item list-group-item-action bg-light"><span>Información personal</span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <%= link_to user_path(current_user.id), :class => 'list-group-item list-group-item-action' do %>
+              <i class="fa fa-circle" aria-hidden="true"></i> <span class="sidebar-text-custom">Datos personales</span>
+          <% end %>
+          <%= link_to user_academic_path(current_user.id), :class => 'list-group-item list-group-item-action' do %>
+              <i class="fa fa-circle" aria-hidden="true"></i> <span class="sidebar-text-custom">Datos academicos </span>
+
+          <% end %>
+        </div>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+
+      </div>
+
+</div>
+<% end %>

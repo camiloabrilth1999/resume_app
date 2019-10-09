@@ -4,6 +4,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create :assign_default_role
   belongs_to :city, optional: true
+  belongs_to :gender, optional: true
+  belongs_to :militarycard, optional: true
+  belongs_to :nationalidentifiertype, optional: true
+  belongs_to :nacionalitytype, optional: true
+  has_many :useridioms
+  has_many :basicmiddleeducations
+  has_many :ocupationexperinces
+  has_many :useracademicmodalities
 
   #validates :city_id, presence: true
   validates :name, presence: true

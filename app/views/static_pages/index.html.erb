@@ -1,2 +1,19 @@
-<h1>Bienvenido(a) a Resume App</h1>
-<p>La mejor aplicación web para el registro y consulta de tus datos como funcionario público</p>
+<% if user_signed_in?%>
+  <h1>
+    Bienvenido(a) <%= current_user.name %>
+  </h1>
+  <p>Recuerda mantener tu información atualizada en nuestro sistema.</p>
+<% else %>
+<div class="row">
+  <div class="col-6">
+    <%= image_tag("si-employee.png", :alt => "Imagen portal de empleados", :class => "img-portal-index") %>
+  </div>
+  <div class="col-6 content-portal-index">
+    <h1>Bienvenido(a) a Resume App</h1>
+    <p>La mejor aplicación para el registro, actualización y consulta para tus datos empleados en la hoja de funcionario
+    público.</p>
+    <p>Si quieres inciar sesión has: <a href="<%=new_user_session_path%>">CLICK AQUI</a></p>
+    <p>Si quieres registrarte has: <a href="<%=new_user_registration_path%>">CLICK AQUI</a></p>
+  </div>
+</div>
+<% end %>

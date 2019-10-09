@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead class="thead-dark thead-custom">
+        <tr>
+          <th scope="col" colspan="2">Datos personales</th>
+        </tr>
+      </thead>
+      <tbody class="tbody-custom">
+        <tr>
+          <th scope="row">Nombre(s) </th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Primer apellido</th>
+          <td><%= @user.first_last_name %></td>
+        </tr>
+        <% if !@user.second_last_name.empty?  %>
+        <tr>
+          <th scope="row">Segundo apellido</th>
+          <td><%=  @user.second_last_name %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <th scope="row">Correo electronico</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row">Numero de documento</th>
+          <td><%= @user.national_identifier_number %></td>
+        </tr>
+        <tr>
+          <th scope="row">Fecha de nacimiento</th>
+          <td><%= @user.birth_date %></td>
+        </tr>
+        <tr>
+          <th scope="row">Ciudad de nacimiento</th>
+          <td><%= @city.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Departamento de nacimiento</th>
+          <td><%= State.find(@city.state_id).name %></td>
+        </tr>
+        <tr>
+          <th scope="row">País de nacimiento</th>
+          <td><%= Country.find(State.find(@city.state_id).id).name %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= button_to "Actualizar datos personales", edit_user_registration_path, method: :get %>
+  </div>
+</div>

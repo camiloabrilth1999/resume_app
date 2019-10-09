@@ -1,0 +1,2 @@
+class CurrentEmployment < ApplicationRecord
+end

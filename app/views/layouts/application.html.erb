@@ -3,19 +3,50 @@
   <head>
     <title>ResumeApp</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <div class="container-fluid">
-      <!--<div class="alert alert-info" role="alert">-->
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      <!--</div>-->
-      <%= yield %>
+    <div class="d-flex" id="wrapper">
+      <%= render 'layouts/sidebar' %>
+      <div id="page-content-wrapper">
+        <%= render 'layouts/header' %>
+        <div class="container-fluid">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+        </div>
+      </div>
     </div>
+    <%= render 'layouts/footer' %>
+    <!-- Menu Toggle Script -->
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+    <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dropdownContent = this.nextElementSibling;
+      if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+      dropdownContent.classList.remove("select-element-sidebar");
+      } else {
+      dropdownContent.style.display = "block";
+      dropdownContent.className += " select-element-sidebar" + name;
+      }
+      });
+    }
+    </script>
   </body>
 </html>

@@ -6,5 +6,7 @@ class AddExtraAttributesToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :second_last_name, :string
     add_column :users, :national_identifier_number, :string
     add_column :users, :birth_date, :date
+    add_column :users, :country_nationality, :string
+    add_column :users, :address, :string
   end
 end
