@@ -1,3 +1,4 @@
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -12,4 +13,12 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery3
+//= require jquery_ujs
+//= require popper
+//= require bootstrap
+//= require jquery.easing
+
+//= require Chart.min
+//= require datatables
 //= require_tree .

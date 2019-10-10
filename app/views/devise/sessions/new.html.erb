@@ -1,0 +1,31 @@
+<div class="row login-form-custom">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign In</h5>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html=>{:class => "form-signin"}) do |f| %>
+              <div class="form-label-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "Correo electronico", :class => "form-control", :id => "inputEmail" %>
+              </div>
+
+              <div class="form-label-group">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "current-password", :placeholder => "Contraseña", :class => "form-control", :id => "inputPassword"  %>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="custom-control custom-checkbox mb-3">
+                  <%= f.check_box :remember_me,  :class => "custom-control-input", :id => "customCheck1" %>
+                  <%= f.label :remember_me, :class => "custom-control-label" %>
+                </div>
+              <% end %>
+
+              <div class="actions">
+                <%= f.submit "Iniciar sesión", :class => "btn btn-lg btn-primary btn-block text-uppercase"%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>

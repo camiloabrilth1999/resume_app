@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number_approved_semesters: MyString
+  graduate: false
+  name_studies: MyString
+  date_completation_studie: 2019-10-08
+  number_professional_card: MyString
+
+two:
+  number_approved_semesters: MyString
+  graduate: false
+  name_studies: MyString
+  date_completation_studie: 2019-10-08
+  number_professional_card: MyString

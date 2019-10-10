@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_degree: 
+  degree_obtained: MyString
+  date_degree: 2019-10-08
+
+two:
+  last_degree: 
+  degree_obtained: MyString
+  date_degree: 2019-10-08

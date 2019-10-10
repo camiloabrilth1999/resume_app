@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  charge_company: MyString
+  dependency: MyString
+  entry_date: 2019-10-08
+  retirement_date: 2019-10-08
+
+two:
+  charge_company: MyString
+  dependency: MyString
+  entry_date: 2019-10-08
+  retirement_date: 2019-10-08

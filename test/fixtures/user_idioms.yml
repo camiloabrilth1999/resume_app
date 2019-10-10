@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  to_speak: MyString
+  to_read: MyString
+  to_write: MyString
+
+two:
+  to_speak: MyString
+  to_read: MyString
+  to_write: MyString
