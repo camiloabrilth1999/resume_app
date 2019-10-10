@@ -17,4 +17,8 @@
 //= require jquery_ujs
 //= require popper
 //= require bootstrap
+//= require jquery.easing
+
+//= require Chart.min
+//= require datatables
 //= require_tree .

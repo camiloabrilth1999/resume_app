@@ -40,6 +40,10 @@ gem "pundit"
 gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'jquery-easing-rails'
+gem 'font_awesome5_rails'
+gem 'chart-js-rails'
+gem 'jquery-datatables'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
